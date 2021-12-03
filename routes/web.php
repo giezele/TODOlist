@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ChecklistController;
+use App\Http\Controllers\Admin\ChecklistGroupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +26,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin'], function(){
     Route::resource('pages', PageController::class);
+    Route::resource('checklist_groups', ChecklistGroupController::class);
+    Route::resource('checklist_groups.checklists', ChecklistController::class);
 });
