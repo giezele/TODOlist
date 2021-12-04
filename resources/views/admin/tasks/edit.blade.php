@@ -6,43 +6,42 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        @if ($errors->any())
+                        @if ($errors->storetask->any())
                             <div class="alert alert-danger">
                                 <ul>
-                                    @foreach ($errors->all() as $error)
+                                    @foreach ($errors->storetask->all() as $error)
                                         <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
                             </div>
                         @endif
 
-                        <form action="{{ route('admin.checklist_groups.update', $checklistGroup) }}" method="POST">
+                        <form action="{{ route('admin.checklists.tasks.update', [$checklist, $task]) }}" method="POST">
                             @csrf
                             @method('PUT')
-                            <div class="card-header">{{ __('Edit Checklist Group') }}</div>
+                            <div class="card-header">{{ __('Edit Task') }}</div>
+
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="checklist-group-name">{{ __('Name') }}</label>
-                                            <input value="{{ $checklistGroup->name }}" class="form-control" name="name"
-                                                type="text" id="checklist-group-name" required autofocus>
+                                            <label for="task-name">{{ __('Name') }}</label>
+                                            <input value="{{ $task->name }}" class="form-control" name="name"
+                                                type="text" id="task-name" required autofocus>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="task-textarea">{{ __('Description') }}</label>
+                                            <textarea class="form-control" name="description" rows="5"
+                                                id="task-textarea">{{ $task->description }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-sm btn-primary" type="submit"> {{ __('Save') }}</button>
+                                <button class="btn btn-sm btn-primary" type="submit"> {{ __('Save Task') }}</button>
                             </div>
                         </form>
                     </div>
-                    <form action="{{ route('admin.checklist_groups.destroy', $checklistGroup) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-sm btn-danger" type="submit"
-                            onclick="return confirm('{{ __('Are you sure?') }}')">
-                            {{ __('Delete This Checklist Group') }}</button>
-                    </form>
                 </div>
             </div>
         </div>
