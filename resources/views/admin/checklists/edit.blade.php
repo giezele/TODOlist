@@ -52,7 +52,7 @@
                     <div class="card">
                         <div class="card-header"><i class="fa fa-align-justify"></i> {{ __('List of Tasks') }}</div>
                         <div class="card-body">
-                            @livewire('tasks-table', ['checklist' => $checklist])                           
+                            @livewire('tasks-table', ['checklist' => $checklist])
                         </div>
                     </div>
 
@@ -67,8 +67,7 @@
                             </div>
                         @endif
 
-                        <form
-                            action="{{ route('admin.checklists.tasks.store', [$checklist]) }}" method="POST">
+                        <form action="{{ route('admin.checklists.tasks.store', [$checklist]) }}" method="POST">
                             @csrf
                             <div class="card-header">{{ __('New Task') }}</div>
 
@@ -78,11 +77,12 @@
                                         <div class="form-group">
                                             <label for="name">{{ __('Name') }}</label>
                                             <input value="{{ old('name') }}" class="form-control" name="name"
-                                                   type="text">
+                                                type="text">
                                         </div>
                                         <div class="form-group">
                                             <label for="description">{{ __('Description') }}</label>
-                                            <textarea class="form-control" name="description" rows="5">{{ old('description') }}</textarea>
+                                            <textarea class="form-control" name="description"
+                                                rows="5" id="task-textarea">{{ old('description') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +92,17 @@
                             </div>
                         </form>
                     </div>
+                </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection
+
+    @section('scripts')
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#task-textarea'))
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
+    @endsection
