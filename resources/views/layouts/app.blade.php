@@ -19,53 +19,56 @@
 
 <body class="c-app c-no-layout-transition">
     @include('partials.sidebar')
-    <div class="c-wrapper">
-        <header class="c-header c-header-light c-header-fixed">
-            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
-                data-class="c-sidebar-show">
+    <div class="c-wrapper c-fixed-components">
+        <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
+            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
                 <svg class="c-icon c-icon-lg">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-menu') }}"></use>
                 </svg>
             </button>
-
+            <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
+                <svg class="c-icon c-icon-lg">
+                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-menu') }}"></use>
+                </svg>
+            </button>
             
-            <ul class="c-header-nav mfs-auto">
-                <li class="c-header-nav-item">
-                    <a class="c-header-nav-link" href="{{ route('consultation') }}">{{ __('Get Consultation') }}</a>
-                </li>
-                
-                <li class="c-header-nav-item d-md-down-none mx-2">
-                    <a class="c-header-nav-link" href="{{ route('welcome') }}">
-                        <svg class="c-icon">
-                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-settings') }}"></use>
-                        </svg>
-                    </a>
-                </li>
+                <ul class="c-header-nav mfs-auto">
+                    <li class="c-header-nav-item">
+                        <a class="c-header-nav-link" href="{{ route('consultation') }}">{{ __('Get Consultation') }}</a>
+                    </li>
 
-                <li class="c-header-nav-item dropdown">
-                    <a class="c-header-nav-link" data-toggle="dropdown" href="#"
-                        role="button" aria-haspopup="true" aria-expanded="false">
-                        <svg class="c-icon">
-                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
-                        </svg>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right pt-0">
-                        <div class="dropdown-header bg-light py-2"><strong>Account</strong></div>
-                        <a class="dropdown-item" href="{{ route('logout') }}" 
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            <svg class="c-icon mfe-2">
-                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
-                            </svg> {{ __('Logout') }}
+                    <li class="c-header-nav-item d-md-down-none mx-2">
+                        <a class="c-header-nav-link" href="{{ route('welcome') }}">
+                            <svg class="c-icon">
+                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-settings') }}"></use>
+                            </svg>
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-                
-            </ul>
+                    </li>
 
+                    <li class="c-header-nav-item dropdown">
+                        <a class="c-header-nav-link" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">
+                            <svg class="c-icon">
+                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right pt-0">
+                            <div class="dropdown-header bg-light py-2"><strong>Account</strong></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}" 
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <svg class="c-icon mfe-2">
+                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout') }}"></use>
+                                </svg> {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    
+                </ul>
+            {{-- </div> --}}
         </header>
         <div class="c-body">
             <main class="c-main">
