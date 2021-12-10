@@ -26,7 +26,7 @@ class AddWebsiteToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('website');
         });
     }
 }

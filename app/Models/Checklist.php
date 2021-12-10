@@ -13,6 +13,8 @@ class Checklist extends Model
     protected $fillable = [
         'checklist_group_id',
         'name',
+        'user_id',
+        'checklist_id'
     ];
 
     public function tasks()
