@@ -64,22 +64,8 @@
 
         @else
         
-        {{-- @foreach (\App\Models\ChecklistGroup::with(['checklists' => function($query) { $query->whereNull('user_id'); }])->get() as $group)
-            <li class="c-sidebar-nav-title">{{ $group->name }}</li>
-            @foreach ($group->checklists as $checklist)
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link"
-                        href="{{ route('user.checklists.show', $checklist) }}">
-                        <svg class="c-sidebar-nav-icon">
-                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-list') }}"></use>
-                        </svg>
-                        {{ $checklist->name }}</a>
-                </li>
-            @endforeach
-        @endforeach --}}
-
             <li class="c-sidebar-nav-title">{{ __('Manage Checklists') }}</li>
-            @foreach (\App\Models\ChecklistGroup::with('checklists')->get() as $group)
+            @foreach (\App\Models\ChecklistGroup::with(['checklists' => function($query) { $query->whereNull('user_id'); }])->get() as $group)
                 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show">
                     <a class="c-sidebar-nav-link">
                         <svg class="c-sidebar-nav-icon">
