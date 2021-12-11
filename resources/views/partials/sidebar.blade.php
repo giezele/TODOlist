@@ -62,32 +62,32 @@
                 </a>
             </li>
 
-        @else
-        
-            <li class="c-sidebar-nav-title">{{ __('Manage Checklists') }}</li>
-            @foreach (\App\Models\ChecklistGroup::with(['checklists' => function($query) { $query->whereNull('user_id'); }])->get() as $group)
-                <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show">
-                    <a class="c-sidebar-nav-link">
-                        <svg class="c-sidebar-nav-icon">
-                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-folder-open') }}"></use>
-                        </svg> {{ $group->name }}
-                    </a>
-                    <ul class="c-sidebar-nav-dropdown-items">
-                        @foreach ($group->checklists as $checklist)
-                        <li class="c-sidebar-nav-item">
-                            <a class="c-sidebar-nav-link" style="padding: .5rem .5rem .5rem 70px"
-                               href="{{ route('user.checklists.show', [$checklist]) }}">
-                                <svg class="c-sidebar-nav-icon">
-                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-list') }}"></use>
-                                </svg>
-                                {{ $checklist->name }}</a>
-                        </li>
-                        @endforeach
-                        
-                    </ul>
+            @else
+            @foreach ($user_menu as $group)
+                <li class="c-sidebar-nav-title">{{ $group['name'] }}
+                    @if ($group['is_new'])
+                        <span class="badge badge-info">NEW</span>
+                    @elseif ($group['is_updated'])
+                        <span class="badge badge-info">UPD</span>
+                    @endif
                 </li>
+                @foreach ($group['checklists'] as $checklist)
+                    <li class="c-sidebar-nav-item">
+                        <a class="c-sidebar-nav-link"
+                           href="{{ route('user.checklists.show', [$checklist['id']]) }}">
+                            <svg class="c-sidebar-nav-icon">
+                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-list') }}"></use>
+                            </svg>
+                            {{ $checklist['name'] }}
+                            @if ($checklist['is_new'])
+                                <span class="badge badge-info">NEW</span>
+                            @elseif ($checklist['is_updated'])
+                                <span class="badge badge-info">UPD</span>
+                            @endif
+                        </a>
+                    </li>
+                @endforeach
             @endforeach
-
         @endif
 
 
