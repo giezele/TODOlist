@@ -1,7 +1,20 @@
-<table class="table table-responsive-sm" wire:sortable="updateTaskOrder">
+<table class="table table-responsive-sm">
     <tbody>
     @foreach ($tasks as $task)
-    <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
+    <tr>
+        <td>
+            @if ($task->position >= 1)
+                <a wire:click.prevent="task_up({{ $task->id }})" href="#">
+                    &uArr;
+                </a>   
+            @endif
+            @if ($task->position < $task->max('position'))
+                <a wire:click.prevent="task_down({{ $task->id }})" href="#">
+                    &dArr;
+                </a>
+            @endif
+            
+        </td>
         <td>{{ $task->name }}</td>
         <td>
             <a class="btn btn-sm btn-primary"
