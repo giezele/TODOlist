@@ -15,8 +15,10 @@
                                 </ul>
                             </div>
                         @endif
-                            
-                        <form action="{{ route('admin.pages.update', [$page]) }}" method="POST">
+
+                        <form
+                            action="{{ route('admin.pages.update', [$page]) }}"
+                            method="POST">
                             @csrf
                             @method('PUT')
                             <div class="card-header">{{ __('Edit Page') }}</div>
@@ -25,18 +27,16 @@
                                 @if (session('message'))
                                     <div class="alert alert-info">{{ session('message') }}</div>
                                 @endif
-                        
+
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="title">{{ __('Title') }}</label>
-                                            <input value="{{ $page->title }}" class="form-control" name="title"
-                                                type="text" id="title" required autofocus>
+                                            <label for="page-title">{{ __('Title') }}</label>
+                                            <input value="{{ $page->title }}" class="form-control" name="title" type="text" id="page-title" required autofocus>
                                         </div>
                                         <div class="form-group">
-                                            <label for="content">{{ __('Content') }}</label>
-                                            <textarea class="form-control" name="content" rows="5"
-                                                id="text-area">{{ $page->content }}</textarea>
+                                            <label for="task-textarea">{{ __('Content') }}</label>
+                                            <textarea class="form-control" name="content" rows="5" id="task-textarea">{{ $page->content }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -53,11 +53,5 @@
 @endsection
 
 @section('scripts')
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#text-area'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
+    @include('admin.ckeditor')
 @endsection
