@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                {{ __('Store Review') }}
+                {{ __('Completion Review') }}
             </div>
             <div class="card-body">
                 <div class="row">
