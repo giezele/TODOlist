@@ -80,7 +80,7 @@
                             </svg>
                             {{ $checklist['name'] }}
                             @livewire('completed-tasks-counter', [
-                                'completed_tasks_count' => count($checklist['user_tasks']),
+                                'completed_tasks' => count($checklist['user_tasks']),
                                 'tasks_count' => count($checklist['tasks']),
                                 'checklist_id' => $checklist['id']
                             ])
