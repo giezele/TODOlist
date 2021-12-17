@@ -60,7 +60,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 Frontend: CoreUI Bootstrap Admin Template
 Livewire components for: 
 *showing tasks table
-*automatically showing completed tasks
 *tasks toggling
-*
+*automatically showing completed tasks
+*calculating completed tasks
+*header totals counting
 
