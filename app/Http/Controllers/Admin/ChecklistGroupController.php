@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ChecklistGroup;
 use App\Http\Requests\StoreChecklistGroupRequest;
 use App\Http\Requests\UpdateChecklistGroupRequest;
+use App\Models\ChecklistGroup;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 

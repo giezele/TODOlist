@@ -3,7 +3,7 @@
     @foreach ($tasks as $task)
     <tr>
         <td>
-            @if ($task->position >= 1)
+            @if ($task->position > 1)
                 <a wire:click.prevent="task_up({{ $task->id }})" href="#">
                     &uArr;
                 </a>   

@@ -58,10 +58,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 Frontend: CoreUI Bootstrap Admin Template
+
 Livewire components for: 
+
 *showing tasks table
+
 *tasks toggling
+
 *automatically showing completed tasks
+
 *calculating completed tasks
+
 *header totals counting
 
+
+Automated PHPUnit Tests (uses sqlite from memory)
