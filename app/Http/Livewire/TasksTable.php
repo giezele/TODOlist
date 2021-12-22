@@ -23,7 +23,7 @@ class TasksTable extends Component
             Task::whereNull('user_id')->where('position', $task->position - 1)->update([
                 'position' => $task->position
             ]);
-            $task->update(['position' =>$task->position - 1]);
+            $task->update(['position' => $task->position - 1]);
         }
     }
 
@@ -34,7 +34,7 @@ class TasksTable extends Component
             Task::whereNull('user_id')->where('position', $task->position + 1)->update([
                 'position' => $task->position
             ]);
-            $task->update(['position' =>$task->position + 1]);
+            $task->update(['position' => $task->position + 1]);
         }
     }
 }
