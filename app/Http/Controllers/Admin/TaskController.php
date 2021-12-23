@@ -16,6 +16,8 @@ class TaskController extends Controller
         $position = $checklist->tasks()->where('user_id', NULL)->max('position') + 1;
         $checklist->tasks()->create($request->validated() + ['position' => $position]);
 
+        $checklist->touch();
+
         return redirect()->route('admin.checklist_groups.checklists.edit', [
             $checklist->checklist_group_id, $checklist
         ]);

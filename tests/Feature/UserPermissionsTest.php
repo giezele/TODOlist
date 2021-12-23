@@ -24,13 +24,13 @@ class UserPermissionsTest extends TestCase
     {
         $name = $this->faker->name;
         $email = $this->faker->email;
-        $website = $this->faker->url;
+        $phone = $this->faker->phoneNumber;
         $password = $this->faker->password(8);
 
         $response = $this->post('/register', [
             'name' => $name,
             'email' => $email,
-            'website' => $website,
+            'phone' => $phone,
             'password' => $password,
             'password_confirmation' => $password,
         ]);
@@ -39,7 +39,7 @@ class UserPermissionsTest extends TestCase
         $user = User::where([
             'name' => $name,
             'email' => $email,
-            'website' => $website,
+            'phone' => $phone,
         ])->first();
         $this->assertNotNull($user);
 

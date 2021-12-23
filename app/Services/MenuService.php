@@ -34,7 +34,7 @@ class MenuService
         foreach ($menu->toArray() as $group) {
             if (count($group['checklists']) > 0) {
                 $group_updated_at = $user_checklists->where('checklist_group_id', $group['id'])->max('updated_at');
-                $group['is_new'] = $group_updated_at && Carbon::create($group['created_at'])->greaterThan($group_updated_at);
+                $group['is_new'] = Carbon::create($group['created_at'])->greaterThan($group_updated_at);
                 $group['is_updated'] = !($group['is_new'])
                     && $group_updated_at
                     && Carbon::create($group['updated_at'])->greaterThan($group_updated_at);
@@ -48,9 +48,9 @@ class MenuService
                     $checklist['is_updated'] = !($group['is_new']) && !($group['is_updated'])
                         && !($checklist['is_new'])
                         && $checklist_updated_at
-                        && Carbon::create($checklist['updated_at'])->greaterThan($checklist_updated_at);;
-                    $checklist['tasks_count'] = count($checklist['tasks']);
+                        && Carbon::create($checklist['updated_at'])->greaterThan($checklist_updated_at);
                     $checklist['completed_tasks_count'] = count($checklist['user_tasks']);
+                    $checklist['tasks_count'] = count($checklist['tasks']);
                 }
 
                 $groups[] = $group;

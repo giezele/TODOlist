@@ -1,4 +1,4 @@
-<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 <script>
     class MyUploadAdapter {
         constructor( loader ) {
@@ -93,6 +93,12 @@
     ClassicEditor
         .create( document.querySelector( '#task-textarea' ), {
             extraPlugins: [ SimpleUploadAdapterPlugin ],
+        } )
+        .then( editor => {
+            // Simulate label behavior if textarea had a label
+            if (editor.sourceElement.labels.length > 0) {
+                editor.sourceElement.labels[0].addEventListener('click', e => editor.editing.view.focus());
+            }
         } )
         .catch( error => {
             console.error( error );

@@ -88,7 +88,7 @@ class UserMenuTest extends TestCase
 
         $this->actingAs($this->user);
         $menu = (new MenuService())->get_menu();
-        $this->assertFalse($menu['user_menu'][0]['is_new']);
+        $this->assertTrue($menu['user_menu'][0]['is_new']);
         $this->assertFalse($menu['user_menu'][0]['is_updated']);
         $this->assertFalse($menu['user_menu'][0]['checklists'][0]['is_new']);
         $this->assertFalse($menu['user_menu'][0]['checklists'][0]['is_updated']);
@@ -118,6 +118,6 @@ class UserMenuTest extends TestCase
         $this->actingAs($this->user);
         $menu = (new MenuService())->get_menu();
         $this->assertFalse($menu['user_menu'][0]['checklists'][0]['is_new']);
-        // $this->assertTrue($menu['user_menu'][0]['checklists'][0]['is_updated']);
+        $this->assertTrue($menu['user_menu'][0]['checklists'][0]['is_updated']);
     }
 }

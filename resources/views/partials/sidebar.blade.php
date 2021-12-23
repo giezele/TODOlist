@@ -1,11 +1,21 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <div class="sidebar-brand d-none d-md-flex">
+        <svg class="sidebar-brand-full" width="auto" height="46" alt="Logo">
+            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-library-building') }}"></use>
+        </svg>        
+    </div>
+    <div class="c-sidebar-nav-title" style="color:white;text-align:center;">
+        <h4>{{ __('TENTS & EVENTS') }}</h4>
+        <p>Team checklist</p>
+    </div>
+
     <ul class="c-sidebar-nav">
         @if (auth()->user()->is_admin)
             <li class="c-sidebar-nav-title">{{ __('Manage Checklists') }}</li>
             @foreach ($admin_menu as $group)
                 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show">
                     <a class="c-sidebar-nav-link"
-                       href="{{ route('admin.checklist_groups.edit', $group->id) }}">
+                        href="{{ route('admin.checklist_groups.edit', $group->id) }}">
                         <svg class="c-sidebar-nav-icon">
                             <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-folder-open') }}"></use>
                         </svg> {{ $group->name }}
@@ -99,15 +109,6 @@
 
         <li class="c-sidebar-nav-title">{{ __('Other') }}</li>
 
-        <li class="c-sidebar-nav-dropdown"><a class="c-sidebar-nav-dropdown-toggle" href="#">
-                <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-puzzle') }}"></use>
-                </svg> Base</a>
-            <ul class="c-sidebar-nav-dropdown-items">
-                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="base/breadcrumb.html"> Breadcrumb</a>
-                </li>
-            </ul>
-        </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

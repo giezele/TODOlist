@@ -13,7 +13,7 @@
                                         <th>{{ __('Register Time') }}</th>
                                         <th>{{ __('Name') }}</th>
                                         <th>{{ __('Email') }}</th>
-                                        <th>{{ __('Website') }}</th>
+                                        <th>{{ __('Phone') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -22,7 +22,7 @@
                                     <td>{{ $user->created_at }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->website }}</td>
+                                    <td>{{ $user->phone }}</td>
                                 
                                 </tr>
                                 @endforeach
