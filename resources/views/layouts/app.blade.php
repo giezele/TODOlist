@@ -34,13 +34,13 @@
             
                 <ul class="c-header-nav mfs-auto">
                     <li class="c-header-nav-item">
-                        <a class="c-header-nav-link" href="{{ route('consultation') }}">{{ __('Get Consultation') }}</a>
+                        <a class="c-header-nav-link" href="{{ route('consultation') }}">{{ __('Ask Colleagues') }}</a>
                     </li>
 
                     <li class="c-header-nav-item d-md-down-none mx-2">
                         <a class="c-header-nav-link" href="{{ route('welcome') }}">
                             <svg class="c-icon">
-                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-settings') }}"></use>
+                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-institution') }}"></use>
                             </svg>
                         </a>
                     </li>

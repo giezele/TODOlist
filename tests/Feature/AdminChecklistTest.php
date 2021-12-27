@@ -24,7 +24,7 @@ class AdminChecklistTest extends TestCase
         $this->actingAs($admin);
     }
 
-    public function test_manage_checklist_groups()
+    public function test_crud_groups()
     {
         // Test CREATE
         $response = $this->post('admin/checklist_groups', [
@@ -61,7 +61,7 @@ class AdminChecklistTest extends TestCase
         $this->assertEquals(0, $menu['admin_menu']->where('name', 'Updated first group')->count());
     }
 
-    public function test_manage_checklists()
+    public function test_crud_lists()
     {
         $checklist_group = ChecklistGroup::factory()->create();
 
@@ -102,7 +102,7 @@ class AdminChecklistTest extends TestCase
         $this->assertFalse($menu['admin_menu']->first()->checklists->contains($checklist));
     }
 
-    public function test_manage_tasks()
+    public function test_crud_tasks()
     {
         $checklist_group = ChecklistGroup::factory()->create();
         $checklist = Checklist::factory()->create(['checklist_group_id' => $checklist_group->id]);

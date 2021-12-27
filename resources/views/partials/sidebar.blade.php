@@ -6,12 +6,11 @@
     </div>
     <div class="c-sidebar-nav-title" style="color:white;text-align:center;">
         <h4>{{ __('TENTS & EVENTS') }}</h4>
-        <p>Team checklist</p>
     </div>
 
     <ul class="c-sidebar-nav">
         @if (auth()->user()->is_admin)
-            <li class="c-sidebar-nav-title">{{ __('Manage Checklists') }}</li>
+            <li class="c-sidebar-nav-title">{{ __('Manage Services') }}</li>
             @foreach ($admin_menu as $group)
                 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show">
                     <a class="c-sidebar-nav-link"
@@ -37,7 +36,7 @@
                                 <svg class="c-sidebar-nav-icon">
                                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-note-add') }}"></use>
                                 </svg>
-                                {{ __('New checklist') }}</a>
+                                {{ __('New list') }}</a>
                         </li>
                     </ul>
                 </li>
@@ -47,7 +46,7 @@
                     <svg class="c-sidebar-nav-icon">
                         <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-library-add') }}"></use>
                     </svg>
-                    {{ __('New checklist group') }}</a>
+                    {{ __('New service group') }}</a>
             </li>
             
             <li class="c-sidebar-nav-title">{{ __('Pages') }}</li>
@@ -56,7 +55,7 @@
                 <a class="c-sidebar-nav-link" 
                 href="{{ route('admin.pages.edit', $page) }}">
                     <svg class="c-sidebar-nav-icon">
-                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-puzzle') }}"></use>
+                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-institution') }}"></use>
                     </svg> {{ $page->title }}
                 </a>
             </li>

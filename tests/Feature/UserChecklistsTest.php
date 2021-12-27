@@ -22,7 +22,7 @@ class UserChecklistsTest extends TestCase
         $this->actingAs(User::factory()->create());
     }
 
-    public function test_can_load_checklist_page()
+    public function test_loading_list_page()
     {
         $checklist_group = ChecklistGroup::factory()->create();
         $checklist = Checklist::factory()->create(['checklist_group_id' => $checklist_group->id]);
@@ -40,7 +40,7 @@ class UserChecklistsTest extends TestCase
             ->assertCount('checklist.tasks', 1);
     }
 
-    public function test_can_complete_task() {
+    public function test_task_completion() {
         $checklist_group = ChecklistGroup::factory()->create();
         $checklist = Checklist::factory()->create(['checklist_group_id' => $checklist_group->id]);
         $task = Task::factory()->create(['checklist_id' => $checklist->id, 'position' => 1]);
